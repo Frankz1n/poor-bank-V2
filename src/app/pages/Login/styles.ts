@@ -1,6 +1,6 @@
 import { Button, styled, TextField } from "@mui/material";
 
-export const Container = styled("div")`
+export const Constainer = styled("div")`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -8,7 +8,8 @@ export const Container = styled("div")`
   justify-content: center;
 
   @media (max-width: 960px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
+    height: auto;
   }
 `;
 
@@ -23,6 +24,8 @@ export const InfoContainer = styled("div")`
 
   @media (max-width: 960px) {
     width: 100%;
+    height: auto;
+    padding: 20px 0;
   }
 `;
 
@@ -48,6 +51,8 @@ export const FormContainer = styled("div")`
 
   @media (max-width: 960px) {
     width: 100%;
+    height: auto;
+    padding: 20px 0;
   }
 `;
 
@@ -64,8 +69,8 @@ export const Form = styled("form")`
 
   @media (max-width: 960px) {
     width: 80%;
-    height: 350px;
-    margin: 20px;
+    height: auto;
+    padding: 20px;
   }
 
   @media (max-width: 600px) {
@@ -94,8 +99,6 @@ export const FormInput = styled(TextField)`
 
   @media (max-width: 600px) {
     width: 90%;
-    height: 10px;
-    margin-top: 5px;
   }
 `;
 

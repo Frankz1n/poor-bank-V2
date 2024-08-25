@@ -1,10 +1,10 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./schema";
 
 import {
-  Constainer,
+  Container,
   Divider,
   Form,
   FormButton,
@@ -21,7 +21,7 @@ import ErrorFormMessage from "../../shared/components/ErrorFormMessage";
 type formData = {
   fullName: string;
   cpf: string;
-  cellphone: string;
+  cellphone?: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -33,12 +33,18 @@ export default function Register() {
     resolver: yupResolver(schema),
   });
   const { errors, isSubmitting } = formState;
+  const navigate = useNavigate();
 
   const location = useLocation();
   const cpf = location.state?.cpf;
 
   const loadingFunction = async () => {
     await new Promise((resolve) => setTimeout(resolve, 3000));
+    navigate("/login", {
+      state: {
+        cpf: cpf,
+      },
+    });
   };
 
   const handleSubmitData = async (data: formData) => {
@@ -48,7 +54,7 @@ export default function Register() {
   };
 
   return (
-    <Constainer>
+    <Container>
       <InfoContainer></InfoContainer>
       <Divider />
       <FormContainer>
@@ -121,6 +127,6 @@ export default function Register() {
           </LoadingArea>
         )}
       </FormContainer>
-    </Constainer>
+    </Container>
   );
 }
